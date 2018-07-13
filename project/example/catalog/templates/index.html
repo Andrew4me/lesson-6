@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{ title }}</title>
+  </head>
+  <body>
+    <main>
+      <div>Шаблон работает {{ content }}</div>
+      {% if is_enabled %}
+        <button>Выключить</button>
+      {% else %}
+        <button>Включить</button>
+      {% endif %}
+      {{ cats|length }}
+      {% for cat in cats %}
+        <div>{{ forloop.counter }}
+          {% if forloop.counter|divisibleby:2 %}
+            Четный
+          {% else %}
+            Нечетный
+          {% endif %} Котика зовут {{ cat.name|lower|upper }}, его id: <strong>{{ cat.id }}</strong>
+          {% if cat.is_sleeping %}
+            Сейчас спит <button>Будим</button>
+          {% else %}
+            Сейчас работает <button>Укладываем спать</button>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </main>
+  </body>
+</html>
